@@ -20,7 +20,7 @@
 
         <target>
             <packageName>sparkJava.generated</packageName>
-            <directory>/home/hakime/Documents/my-github/java-repo/SparkJavaMaven/src/main/java/sparkJava</directory>
+            <directory>/home/hakime/Documents/my-github/java/SparkJava/src/main/java</directory>
         </target>
     </generator>
 </configuration>

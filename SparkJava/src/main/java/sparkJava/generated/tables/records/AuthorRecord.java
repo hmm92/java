@@ -23,9 +23,8 @@ public class AuthorRecord extends UpdatableRecordImpl<AuthorRecord> implements R
 
     /**
      * Setter for <code>public.author.id</code>.
-     * @param value
      */
-    public void setId(int value) {
+    public void setId(Integer value) {
         set(0, value);
     }
 
