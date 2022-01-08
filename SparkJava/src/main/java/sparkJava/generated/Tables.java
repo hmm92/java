@@ -4,9 +4,7 @@
 package sparkJava.generated;
 
 
-import sparkJava.generated.tables.Article;
 import sparkJava.generated.tables.Author;
-import sparkJava.generated.tables.Refresh;
 
 
 /**
@@ -16,17 +14,7 @@ import sparkJava.generated.tables.Refresh;
 public class Tables {
 
     /**
-     * The table <code>public.article</code>.
-     */
-    public static final Article ARTICLE = Article.ARTICLE;
-
-    /**
      * The table <code>public.author</code>.
      */
     public static final Author AUTHOR = Author.AUTHOR;
-
-    /**
-     * The table <code>public.refresh</code>.
-     */
-    public static final Refresh REFRESH = Refresh.REFRESH;
 }

@@ -11,9 +11,7 @@ import org.jooq.Catalog;
 import org.jooq.Table;
 import org.jooq.impl.SchemaImpl;
 
-import sparkJava.generated.tables.Article;
 import sparkJava.generated.tables.Author;
-import sparkJava.generated.tables.Refresh;
 
 
 /**
@@ -22,7 +20,7 @@ import sparkJava.generated.tables.Refresh;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Public extends SchemaImpl {
 
-    private static final long serialVersionUID = 1397704118;
+    private static final long serialVersionUID = 607968576;
 
     /**
      * The reference instance of <code>public</code>
@@ -30,19 +28,9 @@ public class Public extends SchemaImpl {
     public static final Public PUBLIC = new Public();
 
     /**
-     * The table <code>public.article</code>.
-     */
-    public final Article ARTICLE = Article.ARTICLE;
-
-    /**
      * The table <code>public.author</code>.
      */
     public final Author AUTHOR = Author.AUTHOR;
-
-    /**
-     * The table <code>public.refresh</code>.
-     */
-    public final Refresh REFRESH = Refresh.REFRESH;
 
     /**
      * No further instances allowed
@@ -60,8 +48,6 @@ public class Public extends SchemaImpl {
     @Override
     public final List<Table<?>> getTables() {
         return Arrays.<Table<?>>asList(
-            Article.ARTICLE,
-            Author.AUTHOR,
-            Refresh.REFRESH);
+            Author.AUTHOR);
     }
 }

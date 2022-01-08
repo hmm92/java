@@ -11,7 +11,7 @@ import org.jooq.Field;
 import org.jooq.ForeignKey;
 import org.jooq.Name;
 import org.jooq.Record;
-import org.jooq.Row4;
+import org.jooq.Row2;
 import org.jooq.Schema;
 import org.jooq.Table;
 import org.jooq.TableField;
@@ -31,7 +31,7 @@ import sparkJava.generated.tables.records.AuthorRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Author extends TableImpl<AuthorRecord> {
 
-    private static final long serialVersionUID = -1507098952;
+    private static final long serialVersionUID = 1345513277;
 
     /**
      * The reference instance of <code>public.author</code>
@@ -55,16 +55,6 @@ public class Author extends TableImpl<AuthorRecord> {
      * The column <code>public.author.first_name</code>.
      */
     public final TableField<AuthorRecord, String> FIRST_NAME = createField(DSL.name("first_name"), org.jooq.impl.SQLDataType.VARCHAR(255), this, "");
-
-    /**
-     * The column <code>public.author.last_name</code>.
-     */
-    public final TableField<AuthorRecord, String> LAST_NAME = createField(DSL.name("last_name"), org.jooq.impl.SQLDataType.VARCHAR(255), this, "");
-
-    /**
-     * The column <code>public.author.age</code>.
-     */
-    public final TableField<AuthorRecord, Integer> AGE = createField(DSL.name("age"), org.jooq.impl.SQLDataType.INTEGER, this, "");
 
     /**
      * Create a <code>public.author</code> table reference
@@ -141,11 +131,11 @@ public class Author extends TableImpl<AuthorRecord> {
     }
 
     // -------------------------------------------------------------------------
-    // Row4 type methods
+    // Row2 type methods
     // -------------------------------------------------------------------------
 
     @Override
-    public Row4<Integer, String, String, Integer> fieldsRow() {
-        return (Row4) super.fieldsRow();
+    public Row2<Integer, String> fieldsRow() {
+        return (Row2) super.fieldsRow();
     }
 }
