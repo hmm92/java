@@ -11,6 +11,8 @@ import org.jooq.*;
 import org.jooq.codegen.GenerationTool;
 import org.jooq.impl.DSL;
 
+import javax.ws.rs.NotFoundException;
+
 import static spark.Spark.*;
 import static sparkJava.generated.tables.Author.AUTHOR;
 
@@ -19,122 +21,100 @@ public class SampleApi {
 
     public static void main(String[] args) throws Exception {
 
-        GenerationTool.generate(Files.readString(Path.of("refresh.xml")));
-
+//        GenerationTool.generate(Files.readString(Path.of("refresh.xml")));
         String userName = "postgres";
         String password = "password";
         String url = "jdbc:postgresql://localhost:5432/postgres";
         Connection conn = null;
         Gson gson = new Gson();
+        exception(NotFoundException.class, (e, request, response) -> {
+            response.status(404);
+            response.body("Resource not found");
+        });
+if (userName=="postgress"){
+    throw new NotFoundException("jdj");
 
-
+}
         try {
             conn = DriverManager.getConnection(url, userName, password);
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        DSLContext dsl = DSL.using(conn, SQLDialect.POSTGRES);
+        DSLContext context = DSL.using(conn, SQLDialect.POSTGRES);
 
         //CREATE
         post("/author", (request, response) -> {
-            String first_name = request.queryParams("first_name");
+            String firstName = request.queryParams("firstName");
             int id = Integer.parseInt(request.queryParams("id"));
-            dsl.insertInto(AUTHOR,
-                            AUTHOR.ID, AUTHOR.FIRST_NAME)
-                    .values(id, first_name)
+
+            context.insertInto(AUTHOR)
+                    .set(AUTHOR.ID, id)
+                    .set(AUTHOR.FIRST_NAME, firstName)
                     .execute();
             return "record inserted";
-
         });
 
 
         // READ
         get("/author", (request, response) -> {
+            int pageNumber = Integer.parseInt(request.queryParams("pageNumber")); // use per-page
+            int RowsOfPage = Integer.parseInt(request.queryParams("RowsOfPage"));
 
-            List<Author> todoList = dsl.select(AUTHOR.ID, AUTHOR.FIRST_NAME)
+            List<Author> todoList = context.select(AUTHOR.ID, AUTHOR.FIRST_NAME)
                     .from(AUTHOR)
+                    .orderBy(AUTHOR.ID).limit(RowsOfPage).offset((pageNumber - 1) * RowsOfPage)
                     .fetchInto(Author.class);
-
-            int page = Integer.parseInt(request.queryParams("page"));
-            int perPage = Integer.parseInt(request.queryParams("per-page"));
-
-
-            int size = todoList.size();
-            int startIndex = page * perPage - perPage;
-            int endIndex = startIndex + perPage;
-            System.out.println("StartIndex = " + startIndex);
-            System.out.println("endIndex = " + endIndex);
-
-
-            List newList = new ArrayList();
-            if (startIndex <= size) {
-                if (endIndex < size) {
-
-                    newList.addAll(todoList.subList(startIndex, endIndex));
-                } else {
-                    newList.addAll(todoList.subList(startIndex, size));
-
-                }
-
-
-                return newList;
-
-            }
-            return "no item";
-
+            return todoList;
         }, gson::toJson);
 
-       // READ ALL
+
+        // READ ALL
         get("/authorall", (request, response) -> {
 
-            List<Author> todoList = dsl.select(AUTHOR.ID, AUTHOR.FIRST_NAME)
+            List<Author> todoList = context.select(AUTHOR.ID, AUTHOR.FIRST_NAME)
                     .from(AUTHOR)
                     .fetchInto(Author.class);
 
             return todoList;
-
         }, gson::toJson);
-
 
 
         //UPDATE
         put("/author", (request, response) -> {
-            String first_name = request.queryParams("first_name");
+            String firstName = request.queryParams("firstName"); //path param
             int id = Integer.parseInt(request.queryParams("id"));
 
-            List<Author> todoList  = dsl
-                    .selectFrom(AUTHOR)
+            Author todoItem = context
+                    .select(AUTHOR.ID, AUTHOR.FIRST_NAME)
+                    .from(AUTHOR)
                     .where(AUTHOR.ID.equal(id))
-                    .fetchInto(Author.class);
-            //if found
-            if (!todoList.isEmpty()) {
-
-            dsl.update(AUTHOR)
-                    .set(AUTHOR.FIRST_NAME,first_name)
+                    .fetchOneInto(Author.class);
+            System.out.println(todoItem);
+            if (todoItem == null) {
+                throw new NotFoundException("");
+            }
+            context.update(AUTHOR)
+                    .set(AUTHOR.FIRST_NAME, firstName)
                     .where(AUTHOR.ID.eq(id))
                     .execute();
-                return "Example updated";
-
-            }
-            else {
-                return "Example dosent exist";
-            }
-
+            return "item updated";
         });
 
         //DELETE
         delete("/author", (request, response) -> {
             int id = Integer.parseInt(request.queryParams("id"));
-
-            dsl.delete(AUTHOR)
+            if (id==0) {
+                throw new NotFoundException("jdj");}
+            context.delete(AUTHOR)
                     .where(AUTHOR.ID.eq(id))
                     .execute();
 
-             return "delete";
+            return "item deleted";
         });
-
 
 
     }
 }
+//add book table join author
+//select join tables
