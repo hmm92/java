@@ -4,7 +4,7 @@ import java.util.Collection;
 
 public class Author {
     private int id;
-    private String firstName;
+    private String first_name;
 
     public int getId() {
         return id;
@@ -14,12 +14,11 @@ public class Author {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getFirst_name() {
+        return first_name;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFirst_name(String first_name) {
+        this.first_name = first_name;
     }
-
 }

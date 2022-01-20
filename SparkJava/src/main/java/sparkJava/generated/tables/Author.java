@@ -4,11 +4,9 @@
 package sparkJava.generated.tables;
 
 
-import java.util.Arrays;
-import java.util.List;
-
 import org.jooq.Field;
 import org.jooq.ForeignKey;
+import org.jooq.Identity;
 import org.jooq.Name;
 import org.jooq.Record;
 import org.jooq.Row2;
@@ -16,7 +14,6 @@ import org.jooq.Schema;
 import org.jooq.Table;
 import org.jooq.TableField;
 import org.jooq.TableOptions;
-import org.jooq.UniqueKey;
 import org.jooq.impl.DSL;
 import org.jooq.impl.TableImpl;
 
@@ -31,7 +28,7 @@ import sparkJava.generated.tables.records.AuthorRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Author extends TableImpl<AuthorRecord> {
 
-    private static final long serialVersionUID = 1345513277;
+    private static final long serialVersionUID = -1098374996;
 
     /**
      * The reference instance of <code>public.author</code>
@@ -49,12 +46,12 @@ public class Author extends TableImpl<AuthorRecord> {
     /**
      * The column <code>public.author.id</code>.
      */
-    public final TableField<AuthorRecord, Integer> ID = createField(DSL.name("id"), org.jooq.impl.SQLDataType.INTEGER.nullable(false), this, "");
+    public final TableField<AuthorRecord, Integer> ID = createField(DSL.name("id"), org.jooq.impl.SQLDataType.INTEGER.nullable(false).defaultValue(org.jooq.impl.DSL.field("nextval('author_id_seq'::regclass)", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
      * The column <code>public.author.first_name</code>.
      */
-    public final TableField<AuthorRecord, String> FIRST_NAME = createField(DSL.name("first_name"), org.jooq.impl.SQLDataType.VARCHAR(255), this, "");
+    public final TableField<AuthorRecord, String> FIRST_NAME = createField(DSL.name("first_name"), org.jooq.impl.SQLDataType.VARCHAR, this, "");
 
     /**
      * Create a <code>public.author</code> table reference
@@ -95,13 +92,8 @@ public class Author extends TableImpl<AuthorRecord> {
     }
 
     @Override
-    public UniqueKey<AuthorRecord> getPrimaryKey() {
-        return Keys.AUTHOR_PKEY;
-    }
-
-    @Override
-    public List<UniqueKey<AuthorRecord>> getKeys() {
-        return Arrays.<UniqueKey<AuthorRecord>>asList(Keys.AUTHOR_PKEY);
+    public Identity<AuthorRecord, Integer> getIdentity() {
+        return Keys.IDENTITY_AUTHOR;
     }
 
     @Override

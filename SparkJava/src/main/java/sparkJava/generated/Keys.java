@@ -4,8 +4,7 @@
 package sparkJava.generated;
 
 
-import org.jooq.TableField;
-import org.jooq.UniqueKey;
+import org.jooq.Identity;
 import org.jooq.impl.Internal;
 
 import sparkJava.generated.tables.Author;
@@ -23,12 +22,12 @@ public class Keys {
     // IDENTITY definitions
     // -------------------------------------------------------------------------
 
+    public static final Identity<AuthorRecord, Integer> IDENTITY_AUTHOR = Identities0.IDENTITY_AUTHOR;
 
     // -------------------------------------------------------------------------
     // UNIQUE and PRIMARY KEY definitions
     // -------------------------------------------------------------------------
 
-    public static final UniqueKey<AuthorRecord> AUTHOR_PKEY = UniqueKeys0.AUTHOR_PKEY;
 
     // -------------------------------------------------------------------------
     // FOREIGN KEY definitions
@@ -39,7 +38,7 @@ public class Keys {
     // [#1459] distribute members to avoid static initialisers > 64kb
     // -------------------------------------------------------------------------
 
-    private static class UniqueKeys0 {
-        public static final UniqueKey<AuthorRecord> AUTHOR_PKEY = Internal.createUniqueKey(Author.AUTHOR, "author_pkey", new TableField[] { Author.AUTHOR.ID }, true);
+    private static class Identities0 {
+        public static Identity<AuthorRecord, Integer> IDENTITY_AUTHOR = Internal.createIdentity(Author.AUTHOR, Author.AUTHOR.ID);
     }
 }

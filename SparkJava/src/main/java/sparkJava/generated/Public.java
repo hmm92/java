@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.jooq.Catalog;
+import org.jooq.Sequence;
 import org.jooq.Table;
 import org.jooq.impl.SchemaImpl;
 
@@ -20,7 +21,7 @@ import sparkJava.generated.tables.Author;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Public extends SchemaImpl {
 
-    private static final long serialVersionUID = 607968576;
+    private static final long serialVersionUID = -1391171831;
 
     /**
      * The reference instance of <code>public</code>
@@ -43,6 +44,12 @@ public class Public extends SchemaImpl {
     @Override
     public Catalog getCatalog() {
         return DefaultCatalog.DEFAULT_CATALOG;
+    }
+
+    @Override
+    public final List<Sequence<?>> getSequences() {
+        return Arrays.<Sequence<?>>asList(
+            Sequences.AUTHOR_ID_SEQ);
     }
 
     @Override

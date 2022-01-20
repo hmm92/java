@@ -3,7 +3,6 @@ import java.nio.file.Path;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gson.Gson;
@@ -21,7 +20,7 @@ public class SampleApi {
 
     public static void main(String[] args) throws Exception {
 
-//        GenerationTool.generate(Files.readString(Path.of("refresh.xml")));
+        GenerationTool.generate(Files.readString(Path.of("refresh.xml")));
         String userName = "postgres";
         String password = "password";
         String url = "jdbc:postgresql://localhost:5432/postgres";
@@ -29,12 +28,9 @@ public class SampleApi {
         Gson gson = new Gson();
         exception(NotFoundException.class, (e, request, response) -> {
             response.status(404);
-            response.body("Resource not found");
+            response.body("id not found");
         });
-if (userName=="postgress"){
-    throw new NotFoundException("jdj");
 
-}
         try {
             conn = DriverManager.getConnection(url, userName, password);
         } catch (SQLException e) {
@@ -44,12 +40,10 @@ if (userName=="postgress"){
         DSLContext context = DSL.using(conn, SQLDialect.POSTGRES);
 
         //CREATE
-        post("/author", (request, response) -> {
-            String firstName = request.queryParams("firstName");
-            int id = Integer.parseInt(request.queryParams("id"));
+        post("/author/:first-name", (request, response) -> {
+            String firstName = request.params(":first-name");
 
             context.insertInto(AUTHOR)
-                    .set(AUTHOR.ID, id)
                     .set(AUTHOR.FIRST_NAME, firstName)
                     .execute();
             return "record inserted";
@@ -57,9 +51,9 @@ if (userName=="postgress"){
 
 
         // READ
-        get("/author", (request, response) -> {
-            int pageNumber = Integer.parseInt(request.queryParams("pageNumber")); // use per-page
-            int RowsOfPage = Integer.parseInt(request.queryParams("RowsOfPage"));
+        get("/author/:page/:per-page", (request, response) -> {
+            int pageNumber = Integer.parseInt(request.params("page")); // use per-page
+            int RowsOfPage = Integer.parseInt(request.params("per-page"));
 
             List<Author> todoList = context.select(AUTHOR.ID, AUTHOR.FIRST_NAME)
                     .from(AUTHOR)
@@ -70,7 +64,7 @@ if (userName=="postgress"){
 
 
         // READ ALL
-        get("/authorall", (request, response) -> {
+        get("/author", (request, response) -> {
 
             List<Author> todoList = context.select(AUTHOR.ID, AUTHOR.FIRST_NAME)
                     .from(AUTHOR)
@@ -81,12 +75,12 @@ if (userName=="postgress"){
 
 
         //UPDATE
-        put("/author", (request, response) -> {
-            String firstName = request.queryParams("firstName"); //path param
-            int id = Integer.parseInt(request.queryParams("id"));
+        put("/author/:id/:first-name", (request, response) -> {
+            String firstName = request.params("first-name"); //path param
+            int id = Integer.parseInt(request.params("id"));
 
             Author todoItem = context
-                    .select(AUTHOR.ID, AUTHOR.FIRST_NAME)
+                    .select(AUTHOR.ID,AUTHOR.FIRST_NAME)
                     .from(AUTHOR)
                     .where(AUTHOR.ID.equal(id))
                     .fetchOneInto(Author.class);
@@ -102,10 +96,8 @@ if (userName=="postgress"){
         });
 
         //DELETE
-        delete("/author", (request, response) -> {
-            int id = Integer.parseInt(request.queryParams("id"));
-            if (id==0) {
-                throw new NotFoundException("jdj");}
+        delete("/author/:id", (request, response) -> {
+            int id = Integer.parseInt(request.params("id"));
             context.delete(AUTHOR)
                     .where(AUTHOR.ID.eq(id))
                     .execute();
