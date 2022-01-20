@@ -13,6 +13,7 @@ import org.jooq.Table;
 import org.jooq.impl.SchemaImpl;
 
 import sparkJava.generated.tables.Author;
+import sparkJava.generated.tables.Book;
 
 
 /**
@@ -21,7 +22,7 @@ import sparkJava.generated.tables.Author;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Public extends SchemaImpl {
 
-    private static final long serialVersionUID = -1391171831;
+    private static final long serialVersionUID = -804864821;
 
     /**
      * The reference instance of <code>public</code>
@@ -32,6 +33,11 @@ public class Public extends SchemaImpl {
      * The table <code>public.author</code>.
      */
     public final Author AUTHOR = Author.AUTHOR;
+
+    /**
+     * The table <code>public.book</code>.
+     */
+    public final Book BOOK = Book.BOOK;
 
     /**
      * No further instances allowed
@@ -49,12 +55,14 @@ public class Public extends SchemaImpl {
     @Override
     public final List<Sequence<?>> getSequences() {
         return Arrays.<Sequence<?>>asList(
-            Sequences.AUTHOR_ID_SEQ);
+            Sequences.AUTHOR_ID_SEQ,
+            Sequences.BOOK_ID_SEQ);
     }
 
     @Override
     public final List<Table<?>> getTables() {
         return Arrays.<Table<?>>asList(
-            Author.AUTHOR);
+            Author.AUTHOR,
+            Book.BOOK);
     }
 }

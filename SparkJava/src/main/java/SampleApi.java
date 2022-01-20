@@ -14,6 +14,7 @@ import javax.ws.rs.NotFoundException;
 
 import static spark.Spark.*;
 import static sparkJava.generated.tables.Author.AUTHOR;
+import static sparkJava.generated.tables.Book.BOOK;
 
 
 public class SampleApi {
@@ -104,6 +105,20 @@ public class SampleApi {
 
             return "item deleted";
         });
+
+        //join
+        get("/authorBook", (request, response) -> {
+
+            List<AuthorBook> todoList = context.select(AUTHOR.fields())
+                    .select(BOOK.fields())
+                    .from(BOOK)
+                    .join(AUTHOR).on(BOOK.AUTHOR_ID.eq(AUTHOR.ID))
+                    .fetchInto(AuthorBook.class);
+
+            return todoList;
+        }, gson::toJson);
+
+
 
 
     }
