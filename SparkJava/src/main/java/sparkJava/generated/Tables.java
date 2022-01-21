@@ -6,6 +6,7 @@ package sparkJava.generated;
 
 import sparkJava.generated.tables.Author;
 import sparkJava.generated.tables.Book;
+import sparkJava.generated.tables.BookRequest;
 
 
 /**
@@ -23,4 +24,9 @@ public class Tables {
      * The table <code>public.book</code>.
      */
     public static final Book BOOK = Book.BOOK;
+
+    /**
+     * The table <code>public.book_request</code>.
+     */
+    public static final BookRequest BOOK_REQUEST = BookRequest.BOOK_REQUEST;
 }

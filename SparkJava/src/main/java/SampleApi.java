@@ -3,7 +3,9 @@ import java.nio.file.Path;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.google.gson.Gson;
 import org.jooq.*;
@@ -15,9 +17,11 @@ import javax.ws.rs.NotFoundException;
 import static spark.Spark.*;
 import static sparkJava.generated.tables.Author.AUTHOR;
 import static sparkJava.generated.tables.Book.BOOK;
+import static sparkJava.generated.tables.BookRequest.BOOK_REQUEST;
 
 
 public class SampleApi {
+    private static Map<String, String> usernamePasswords = new HashMap<String, String>();
 
     public static void main(String[] args) throws Exception {
 
@@ -39,6 +43,9 @@ public class SampleApi {
         }
 
         DSLContext context = DSL.using(conn, SQLDialect.POSTGRES);
+
+
+
 
         //CREATE
         post("/author", (request, response) -> {
@@ -107,9 +114,9 @@ public class SampleApi {
         });
 
         //join
-        get("/authorBook", (request, response) -> {
+        get("/author-book", (request, response) -> {
 
-            List<AuthorBook> todoList = context.select(AUTHOR.fields())
+            List<AuthorBook> todoList = context.select(AUTHOR.FIRST_NAME,AUTHOR.ID,BOOK.TITLE)
                     .select(BOOK.fields())
                     .from(BOOK)
                     .join(AUTHOR).on(BOOK.AUTHOR_ID.eq(AUTHOR.ID))
@@ -117,6 +124,64 @@ public class SampleApi {
 
             return todoList;
         }, gson::toJson);
+
+
+        post("/book-request", (request, response) -> {
+            String firstName = request.queryParams("first-name");
+            String title = request.queryParams("title");
+            String email = request.queryParams("email");
+
+            AuthorBook item = context.select(AUTHOR.FIRST_NAME,AUTHOR.ID,BOOK.TITLE)
+                    .select(BOOK.fields())
+                    .from(BOOK)
+                    .join(AUTHOR).on(BOOK.AUTHOR_ID.eq(AUTHOR.ID))
+                    .where(AUTHOR.FIRST_NAME.eq(firstName).and(BOOK.TITLE.eq(title)))
+                    .fetchOneInto(AuthorBook.class);
+
+            if (item != null) {
+                halt(403, "I don't think so!!!");
+                return null;
+            }
+
+            context.insertInto(BOOK_REQUEST)
+                    .set(BOOK_REQUEST.TITLE, title)
+                    .set(BOOK_REQUEST.FIRST_NAME,firstName)
+                    .set(BOOK_REQUEST.EMAIL,email)
+                    .execute();
+            return "record inserted";
+        });
+
+
+
+
+        usernamePasswords.put("admin", "admin");
+
+        before("/admin/book-arrived",(request, response) -> {
+            String user = request.queryParams("user");
+            String pass = request.queryParams("pass");
+
+            String dbPassword = usernamePasswords.get(user);
+            if (!(pass!= null && pass.equals(dbPassword))) {
+                halt(401, "You are not welcome here!!!");
+            }
+        });
+
+
+        post("/admin/book-arrived", (request, response) -> {
+            String firstName = request.queryParams("first-name");
+            String title = request.queryParams("title");
+            List<BookRequest> todoList = context.select(BOOK_REQUEST.EMAIL,BOOK_REQUEST.FIRST_NAME,BOOK_REQUEST.TITLE)
+                    .from(BOOK_REQUEST)
+                    .where(BOOK_REQUEST.FIRST_NAME.eq(firstName).and(BOOK_REQUEST.TITLE.eq(title)))
+                    .fetchInto(BookRequest.class);
+
+            for(BookRequest item : todoList) {
+                System.out.println(item.getEmail());
+                //send email
+            }
+            return todoList;
+        }, gson::toJson);
+
 
 
 
