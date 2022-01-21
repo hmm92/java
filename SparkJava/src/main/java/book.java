@@ -1,7 +1,7 @@
 public class book {
     private int id;
     private String title;
-    private int author_id;
+    private int authorId;
 
     public int getId() {
         return id;
@@ -19,11 +19,11 @@ public class book {
         this.title = title;
     }
 
-    public int getAuthor_id() {
-        return author_id;
+    public int getAuthorId() {
+        return authorId;
     }
 
-    public void setAuthor_id(int author_id) {
-        this.author_id = author_id;
+    public void setAuthorId(int authorId) {
+        this.authorId = authorId;
     }
 }

@@ -41,8 +41,8 @@ public class SampleApi {
         DSLContext context = DSL.using(conn, SQLDialect.POSTGRES);
 
         //CREATE
-        post("/author/:first-name", (request, response) -> {
-            String firstName = request.params(":first-name");
+        post("/author", (request, response) -> {
+            String firstName = request.queryParams("first-name");
 
             context.insertInto(AUTHOR)
                     .set(AUTHOR.FIRST_NAME, firstName)
@@ -76,8 +76,8 @@ public class SampleApi {
 
 
         //UPDATE
-        put("/author/:id/:first-name", (request, response) -> {
-            String firstName = request.params("first-name"); //path param
+        put("/author/:id", (request, response) -> {
+            String firstName = request.queryParams("first-name"); //path param
             int id = Integer.parseInt(request.params("id"));
 
             Author todoItem = context
