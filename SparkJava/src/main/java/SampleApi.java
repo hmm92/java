@@ -18,6 +18,7 @@ import static spark.Spark.*;
 import static sparkJava.generated.tables.Author.AUTHOR;
 import static sparkJava.generated.tables.Book.BOOK;
 import static sparkJava.generated.tables.BookRequest.BOOK_REQUEST;
+import org.flywaydb.core.Flyway;
 
 
 public class SampleApi {
@@ -26,6 +27,11 @@ public class SampleApi {
     public static void main(String[] args) throws Exception {
 
 //        GenerationTool.generate(Files.readString(Path.of("refresh.xml")));
+
+        Flyway flyway = Flyway.configure()
+                .dataSource("jdbc:postgresql://localhost:5432/postgres", "postgres", "password")
+                .load();
+        flyway.migrate();
         String userName = "postgres";
         String password = "password";
         String url = "jdbc:postgresql://localhost:5432/postgres";
