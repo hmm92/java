@@ -25,7 +25,7 @@ public class SampleApi {
 
     public static void main(String[] args) throws Exception {
 
-        GenerationTool.generate(Files.readString(Path.of("refresh.xml")));
+//        GenerationTool.generate(Files.readString(Path.of("refresh.xml")));
         String userName = "postgres";
         String password = "password";
         String url = "jdbc:postgresql://localhost:5432/postgres";
@@ -49,10 +49,10 @@ public class SampleApi {
 
         //CREATE
         post("/author", (request, response) -> {
-            String firstName = request.queryParams("first-name");
-
+//            String firstName = request.queryParams("first-name");
+            Author author = new Gson().fromJson(request.body(), Author.class);
             context.insertInto(AUTHOR)
-                    .set(AUTHOR.FIRST_NAME, firstName)
+                    .set(AUTHOR.FIRST_NAME, author.getFirstName())
                     .execute();
             return "record inserted";
         });
@@ -84,8 +84,9 @@ public class SampleApi {
 
         //UPDATE
         put("/author/:id", (request, response) -> {
-            String firstName = request.queryParams("first-name"); //path param
+//            String firstName = request.queryParams("first-name"); //path param
             int id = Integer.parseInt(request.params("id"));
+            Author author = new Gson().fromJson(request.body(), Author.class);
 
             Author todoItem = context
                     .select(AUTHOR.ID,AUTHOR.FIRST_NAME)
@@ -97,7 +98,7 @@ public class SampleApi {
                 throw new NotFoundException("");
             }
             context.update(AUTHOR)
-                    .set(AUTHOR.FIRST_NAME, firstName)
+                    .set(AUTHOR.FIRST_NAME, author.getFirstName())
                     .where(AUTHOR.ID.eq(id))
                     .execute();
             return "item updated";
@@ -127,15 +128,16 @@ public class SampleApi {
 
 
         post("/book-request", (request, response) -> {
-            String firstName = request.queryParams("first-name");
-            String title = request.queryParams("title");
-            String email = request.queryParams("email");
+//            String firstName = request.queryParams("first-name");
+//            String title = request.queryParams("title");
+//            String email = request.queryParams("email");
+            BookRequest book = new Gson().fromJson(request.body(), BookRequest.class);
 
             AuthorBook item = context.select(AUTHOR.FIRST_NAME,AUTHOR.ID,BOOK.TITLE)
-                    .select(BOOK.fields())
+                    .select(BOOK.ID,BOOK.TITLE,BOOK.AUTHOR_ID)
                     .from(BOOK)
                     .join(AUTHOR).on(BOOK.AUTHOR_ID.eq(AUTHOR.ID))
-                    .where(AUTHOR.FIRST_NAME.eq(firstName).and(BOOK.TITLE.eq(title)))
+                    .where(AUTHOR.FIRST_NAME.eq(book.getFirstName()).and(BOOK.TITLE.eq(book.getTitle())))
                     .fetchOneInto(AuthorBook.class);
 
             if (item != null) {
@@ -144,9 +146,9 @@ public class SampleApi {
             }
 
             context.insertInto(BOOK_REQUEST)
-                    .set(BOOK_REQUEST.TITLE, title)
-                    .set(BOOK_REQUEST.FIRST_NAME,firstName)
-                    .set(BOOK_REQUEST.EMAIL,email)
+                    .set(BOOK_REQUEST.TITLE, book.getTitle())
+                    .set(BOOK_REQUEST.FIRST_NAME, book.getFirstName())
+                    .set(BOOK_REQUEST.EMAIL, book.getEmail())
                     .execute();
             return "record inserted";
         });
@@ -168,11 +170,13 @@ public class SampleApi {
 
 
         post("/admin/book-arrived", (request, response) -> {
-            String firstName = request.queryParams("first-name");
-            String title = request.queryParams("title");
+//            String firstName = request.queryParams("first-name");
+//            String title = request.queryParams("title");
+            BookRequest book = new Gson().fromJson(request.body(), BookRequest.class);
+
             List<BookRequest> todoList = context.select(BOOK_REQUEST.EMAIL,BOOK_REQUEST.FIRST_NAME,BOOK_REQUEST.TITLE)
                     .from(BOOK_REQUEST)
-                    .where(BOOK_REQUEST.FIRST_NAME.eq(firstName).and(BOOK_REQUEST.TITLE.eq(title)))
+                    .where(BOOK_REQUEST.FIRST_NAME.eq(book.getFirstName()).and(BOOK_REQUEST.TITLE.eq(book.getTitle())))
                     .fetchInto(BookRequest.class);
 
             for(BookRequest item : todoList) {
@@ -190,3 +194,7 @@ public class SampleApi {
 }
 //add book table join author
 //select join tables
+//migration
+//flyway
+//restful api
+//graphql
