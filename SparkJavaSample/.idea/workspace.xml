@@ -4,40 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="976f7621-f4db-4815-a245-e2754d4be46e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../FlywayJava/.gradle/7.1/dependencies-accessors/dependencies-accessors.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FlywayJava/.gradle/7.1/dependencies-accessors/gc.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FlywayJava/.gradle/7.1/executionHistory/executionHistory.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FlywayJava/.gradle/7.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FlywayJava/.gradle/7.1/fileChanges/last-build.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FlywayJava/.gradle/7.1/fileHashes/fileHashes.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FlywayJava/.gradle/7.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FlywayJava/.gradle/7.1/gc.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FlywayJava/.gradle/7.2/dependencies-accessors/dependencies-accessors.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FlywayJava/.gradle/7.2/dependencies-accessors/gc.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FlywayJava/.gradle/7.2/executionHistory/executionHistory.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FlywayJava/.gradle/7.2/fileChanges/last-build.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FlywayJava/.gradle/7.2/fileHashes/fileHashes.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FlywayJava/.gradle/7.2/gc.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FlywayJava/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FlywayJava/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FlywayJava/.gradle/checksums/checksums.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FlywayJava/.gradle/checksums/md5-checksums.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FlywayJava/.gradle/checksums/sha1-checksums.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FlywayJava/.gradle/vcs-1/gc.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FlywayJava/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FlywayJava/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FlywayJava/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FlywayJava/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FlywayJava/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FlywayJava/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FlywayJava/build/classes/java/main/SampleApi.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FlywayJava/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FlywayJava/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FlywayJava/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FlywayJava/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FlywayJava/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FlywayJava/src/main/java/SampleApi.java" afterDir="false" />
+    <list default="true" id="976f7621-f4db-4815-a245-e2754d4be46e" name="Changes" comment="add SparkJavaSample project">
       <change afterPath="$PROJECT_DIR$/../SparkJava/.env" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../SparkJava/.idea/sqldialects.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../SparkJava/docker-compose.yml" afterDir="false" />
@@ -48,94 +15,6 @@
       <change afterPath="$PROJECT_DIR$/../SparkJava/src/main/java/sparkJava/generated/tables/records/FlywaySchemaHistoryRecord.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../SparkJava/src/main/java/sparkJava/generated/tables/records/PersonRecord.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../SparkJava/src/main/resources/db/migration/V4__Insert_persom_table.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/.gradle/7.1/dependencies-accessors/dependencies-accessors.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/.gradle/7.1/dependencies-accessors/gc.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/.gradle/7.1/executionHistory/executionHistory.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/.gradle/7.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/.gradle/7.1/fileChanges/last-build.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/.gradle/7.1/fileHashes/fileHashes.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/.gradle/7.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/.gradle/7.1/gc.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/.gradle/7.2/dependencies-accessors/dependencies-accessors.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/.gradle/7.2/dependencies-accessors/gc.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/.gradle/7.2/executionHistory/executionHistory.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/.gradle/7.2/fileChanges/last-build.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/.gradle/7.2/fileHashes/fileHashes.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/.gradle/7.2/gc.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/.gradle/checksums/checksums.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/.gradle/checksums/md5-checksums.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/.gradle/checksums/sha1-checksums.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/.gradle/vcs-1/gc.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/build/classes/java/main/Author.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/build/classes/java/main/AuthorBook.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/build/classes/java/main/Book.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/build/classes/java/main/BookRequest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/build/classes/java/main/SampleApi.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/build/classes/java/main/sparkJava/generated/DefaultCatalog.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/build/classes/java/main/sparkJava/generated/Indexes.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/build/classes/java/main/sparkJava/generated/Keys.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/build/classes/java/main/sparkJava/generated/Public.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/build/classes/java/main/sparkJava/generated/Tables.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/build/classes/java/main/sparkJava/generated/tables/Author.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/build/classes/java/main/sparkJava/generated/tables/Book.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/build/classes/java/main/sparkJava/generated/tables/BookRequest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/build/classes/java/main/sparkJava/generated/tables/FlywaySchemaHistory.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/build/classes/java/main/sparkJava/generated/tables/Person.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/build/classes/java/main/sparkJava/generated/tables/records/AuthorRecord.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/build/classes/java/main/sparkJava/generated/tables/records/BookRecord.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/build/classes/java/main/sparkJava/generated/tables/records/BookRequestRecord.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/build/classes/java/main/sparkJava/generated/tables/records/FlywaySchemaHistoryRecord.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/build/classes/java/main/sparkJava/generated/tables/records/PersonRecord.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/build/resources/main/migration/V1__Create_person_table.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/build/resources/main/migration/V2__create_author_table.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/build/resources/main/migration/V3__create_book_tables.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/build/resources/main/migration/V4__Insert_persom_table.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/refresh.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/settings.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/src/main/java/Author.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/src/main/java/AuthorBook.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/src/main/java/Book.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/src/main/java/BookRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/src/main/java/SampleApi.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/src/main/java/Users.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/src/main/java/sparkJava/generated/DefaultCatalog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/src/main/java/sparkJava/generated/Indexes.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/src/main/java/sparkJava/generated/Keys.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/src/main/java/sparkJava/generated/Public.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/src/main/java/sparkJava/generated/Tables.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/src/main/java/sparkJava/generated/tables/Author.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/src/main/java/sparkJava/generated/tables/Book.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/src/main/java/sparkJava/generated/tables/BookRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/src/main/java/sparkJava/generated/tables/FlywaySchemaHistory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/src/main/java/sparkJava/generated/tables/Person.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/src/main/java/sparkJava/generated/tables/Users.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/src/main/java/sparkJava/generated/tables/records/AuthorRecord.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/src/main/java/sparkJava/generated/tables/records/BookRecord.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/src/main/java/sparkJava/generated/tables/records/BookRequestRecord.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/src/main/java/sparkJava/generated/tables/records/FlywaySchemaHistoryRecord.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/src/main/java/sparkJava/generated/tables/records/PersonRecord.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/src/main/java/sparkJava/generated/tables/records/UsersRecord.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/src/main/resources/migration/V1__Create_person_table.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/src/main/resources/migration/V2__create_author_table.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/src/main/resources/migration/V3__create_book_tables.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/src/main/resources/migration/V4__Insert_persom_table.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SparkJavaGradle/src/main/resources/migration/V5__create_user_table.sql" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.gradle/7.1/dependencies-accessors/dependencies-accessors.lock" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.gradle/7.1/dependencies-accessors/gc.properties" afterDir="false" />
@@ -388,8 +267,16 @@
       <updated>1646325424656</updated>
       <workItem from="1646325426096" duration="17914000" />
       <workItem from="1646351437110" duration="884000" />
-      <workItem from="1646398091721" duration="9623000" />
+      <workItem from="1646398091721" duration="9975000" />
     </task>
+    <task id="LOCAL-00001" summary="add SparkJavaSample project">
+      <created>1646413649852</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1646413649852</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -408,6 +295,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="add SparkJavaSample project" />
+    <option name="LAST_COMMIT_MESSAGE" value="add SparkJavaSample project" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
