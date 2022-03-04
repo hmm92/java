@@ -26,12 +26,14 @@ public class SampleApi {
 
     public static void main(String[] args) throws Exception {
 
-//        GenerationTool.generate(Files.readString(Path.of("refresh.xml")));
+        get("/hello", (req, res) -> "Hello World");
 
         Flyway flyway = Flyway.configure()
                 .dataSource("jdbc:postgresql://localhost:5432/postgres", "postgres", "password")
                 .load();
         flyway.migrate();
+       GenerationTool.generate(Files.readString(Path.of("refresh.xml")));
+
         String userName = "postgres";
         String password = "password";
         String url = "jdbc:postgresql://localhost:5432/postgres";

@@ -15,6 +15,8 @@ import org.jooq.impl.SchemaImpl;
 import sparkJava.generated.tables.Author;
 import sparkJava.generated.tables.Book;
 import sparkJava.generated.tables.BookRequest;
+import sparkJava.generated.tables.FlywaySchemaHistory;
+import sparkJava.generated.tables.Person;
 
 
 /**
@@ -23,7 +25,7 @@ import sparkJava.generated.tables.BookRequest;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Public extends SchemaImpl {
 
-    private static final long serialVersionUID = -1626192715;
+    private static final long serialVersionUID = -449786011;
 
     /**
      * The reference instance of <code>public</code>
@@ -44,6 +46,16 @@ public class Public extends SchemaImpl {
      * The table <code>public.book_request</code>.
      */
     public final BookRequest BOOK_REQUEST = BookRequest.BOOK_REQUEST;
+
+    /**
+     * The table <code>public.flyway_schema_history</code>.
+     */
+    public final FlywaySchemaHistory FLYWAY_SCHEMA_HISTORY = FlywaySchemaHistory.FLYWAY_SCHEMA_HISTORY;
+
+    /**
+     * The table <code>public.person</code>.
+     */
+    public final Person PERSON = Person.PERSON;
 
     /**
      * No further instances allowed
@@ -71,6 +83,8 @@ public class Public extends SchemaImpl {
         return Arrays.<Table<?>>asList(
             Author.AUTHOR,
             Book.BOOK,
-            BookRequest.BOOK_REQUEST);
+            BookRequest.BOOK_REQUEST,
+            FlywaySchemaHistory.FLYWAY_SCHEMA_HISTORY,
+            Person.PERSON);
     }
 }

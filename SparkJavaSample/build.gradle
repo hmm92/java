@@ -1,0 +1,83 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+
+    dependencies {
+        /* See above for the correct groupId */
+        classpath 'org.jooq:jooq-codegen:3.16.4'
+        classpath 'org.postgresql:postgresql:42.1.4'
+    }
+}
+
+plugins {
+    id 'java'
+    id "org.flywaydb.flyway" version "8.4.4"
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+
+dependencies {
+    implementation "org.postgresql:postgresql:42.1.4"
+    implementation "com.sparkjava:spark-core:2.9.3"
+    implementation "org.jooq:jooq:3.16.4"
+    implementation("org.jooq:jooq-codegen:3.16.4")
+    implementation group: 'com.google.code.gson', name: 'gson', version: '2.7'
+    implementation group: 'javax.ws.rs', name: 'javax.ws.rs-api', version: '2.0'
+    implementation('io.jsonwebtoken:jjwt:0.2')
+    implementation group: 'io.github.cdimascio', name: 'java-dotenv', version: '5.2.2'
+    implementation 'org.mindrot:jbcrypt:0.4'
+    implementation 'javax.xml.bind:jaxb-api:2.1'
+
+
+
+
+
+}
+
+
+
+task configureFlyway(type: Task) {
+    doFirst {
+        // needs gradle.properties in ~/.gradle or as project parameters
+        flyway.url = "${DATASOURCE_JDBC_URL}"
+//        flyway.schemas = "${DATASOURCE_SCHEMA}"
+        flyway.user = "${DATASOURCE_USERNAME}"
+        flyway.password ="${DATASOURCE_PASSWORD}"
+        flyway.locations = ['filesystem:' + project.getProjectDir() + '/src/main/resources/migrations']
+    }
+
+}
+
+project.tasks.each {
+    if (it.name.startsWith('flyway')) {
+        it.dependsOn configureFlyway
+    }
+}
+// gradle flywayMigrate
+
+
+import org.jooq.codegen.GenerationTool
+import org.jooq.meta.jaxb.*
+
+GenerationTool.generate(new Configuration()
+        .withJdbc(new Jdbc()
+                .withDriver('org.postgresql.Driver')
+                .withUrl("${DATASOURCE_JDBC_URL}")
+                .withUser("${DATASOURCE_USERNAME}")
+                .withPassword("${DATASOURCE_PASSWORD}"))
+        .withGenerator(new Generator()
+                .withDatabase(new Database().withInputSchema("public"))
+                .withGenerate(new Generate()
+                        .withPojos(true)
+                        .withDaos(true))
+                .withTarget(new Target()
+                        .withPackageName('jooq.generated')
+                        .withDirectory('/home/hakime/Documents/my-github/java/SparkJavaSample/src/main/java/'))))

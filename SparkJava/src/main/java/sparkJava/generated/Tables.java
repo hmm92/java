@@ -7,6 +7,8 @@ package sparkJava.generated;
 import sparkJava.generated.tables.Author;
 import sparkJava.generated.tables.Book;
 import sparkJava.generated.tables.BookRequest;
+import sparkJava.generated.tables.FlywaySchemaHistory;
+import sparkJava.generated.tables.Person;
 
 
 /**
@@ -29,4 +31,14 @@ public class Tables {
      * The table <code>public.book_request</code>.
      */
     public static final BookRequest BOOK_REQUEST = BookRequest.BOOK_REQUEST;
+
+    /**
+     * The table <code>public.flyway_schema_history</code>.
+     */
+    public static final FlywaySchemaHistory FLYWAY_SCHEMA_HISTORY = FlywaySchemaHistory.FLYWAY_SCHEMA_HISTORY;
+
+    /**
+     * The table <code>public.person</code>.
+     */
+    public static final Person PERSON = Person.PERSON;
 }
