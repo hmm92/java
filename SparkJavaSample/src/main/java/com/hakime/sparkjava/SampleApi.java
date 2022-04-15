@@ -5,12 +5,33 @@ import com.hakime.sparkjava.controller.AuthController;
 import com.hakime.sparkjava.core.Service;
 import com.hakime.sparkjava.user.UserService;
 
+import java.security.*;
+import java.security.interfaces.RSAPrivateKey;
+import java.security.interfaces.RSAPublicKey;
+import java.util.Base64;
+
 
 public class SampleApi {
-    private static final String SECRET_JWT = "secret_jwt";
+    static KeyPairGenerator keyGenerator;
 
-    private static final TokenService tokenService = new TokenService(SECRET_JWT);
+    static {
+        try {
+            keyGenerator = KeyPairGenerator.getInstance("RSA");
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
+
+    static KeyPair kp = keyGenerator.genKeyPair();
+    static PublicKey publicKey = (PublicKey) kp.getPublic();
+    static PrivateKey privateKey = (PrivateKey) kp.getPrivate();
+
+
+    private static final TokenService tokenService = new TokenService(privateKey,publicKey);
+
+    public SampleApi() throws NoSuchAlgorithmException {
+    }
 
 
     public static void main(String[] args)  {

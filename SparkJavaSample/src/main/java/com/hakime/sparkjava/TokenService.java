@@ -6,14 +6,20 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.impl.DefaultClaims;
 
+import java.security.PrivateKey;
+import java.security.PublicKey;
+
 
 public final class TokenService {
 
-    private final String jwtSecretKey;
+    private final PrivateKey privateKey;
+    private final PublicKey publicKey;
 
 
-    public TokenService(String jwtSecretKey) {
-        this.jwtSecretKey = jwtSecretKey;
+
+    public TokenService(PrivateKey privateKey, PublicKey publicKey) {
+        this.privateKey=privateKey;
+        this.publicKey = publicKey;
     }
 
 
@@ -22,14 +28,14 @@ public final class TokenService {
         claims.setSubject(user.getUsername());
         return Jwts.builder()
                 .setClaims(claims)
-                .signWith(SignatureAlgorithm.HS512, jwtSecretKey)
+                .signWith(SignatureAlgorithm.RS256, privateKey)
                 .compact();
     }
 
 
     public  boolean validateToken(String token) {
         Claims claims = Jwts.parser()
-                .setSigningKey(jwtSecretKey)
+                .setSigningKey(publicKey)
                 .parseClaimsJws(token)
                 .getBody();
         String user = claims.getSubject();

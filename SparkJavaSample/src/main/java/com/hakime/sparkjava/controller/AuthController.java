@@ -55,7 +55,7 @@ public class AuthController  {
                 String encryptedPassword = BCrypt.hashpw(jsonRequest.get(PASSWORD_PROPERTY).getAsString(), BCRYPT_SALT);
                 User user = userService.get(jsonRequest.get(USER_NAME_PROPERTY).getAsString());
                 if (user.getPassword().equals(encryptedPassword)) {
-                    response.header(AUTHORIZATION_HEADER, TOKEN_PREFIX + " " + tokenService.newToken(user));
+                    return TOKEN_PREFIX + " " + tokenService.newToken(user);
                 }
             } catch (Exception e) {
                 response.status(401);
